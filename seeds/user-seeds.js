@@ -24,4 +24,5 @@ const seedUsers = () =>
     returning: true,
   });
 
+
 module.exports = seedUsers;

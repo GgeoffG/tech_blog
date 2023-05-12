@@ -13,7 +13,7 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const dbCommentData = await Comment.findByPk(req.params.id);
 
