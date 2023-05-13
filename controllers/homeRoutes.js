@@ -17,10 +17,10 @@ router.get("/", async (req, res) => {
       ],
     });
     console.log("19");
-    const blog = blogPostData.get({ plain: true });
-    console.log("21");
+    const blog = blogPostData.map((blogpost) => blogpost.get({ plain: true }));
+    console.log(blog.comments);
     res.render("homepage", {
-      ...blog,
+      blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
