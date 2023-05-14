@@ -1,0 +1,16 @@
+<section class="blog-card">
+<h4 class="blog-card-header">{{blog.title}}</h4>
+<section class='single-blog'>
+    <p> {{blog.main}} </p>
+     </section>
+</section>
+
+<section class="single-blog-comment">
+    Comments: <br>
+    {{#each blog.comments as |comment|}}
+    <div class="comment-card">
+    <p>{{comment.text}}</p> <br>
+    <p>-{{comment.user.name}}</p>
+    </div>
+    {{/each}}
+</section>

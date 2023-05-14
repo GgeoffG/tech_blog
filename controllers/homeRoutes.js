@@ -53,10 +53,36 @@ router.get("/dashboard", async (req, res) => {
 router.get("/login", (req, res) => {
   try {
     if (req.session.logged_in) {
-      res.redirect("/profile");
+      res.redirect("/dashboard");
       return;
     }
     res.render("login");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blogData = await Blogpost.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+
+        {
+          model: Comment,
+          include: [{ model: User, attributes: ["name"] }],
+        },
+      ],
+    });
+    const blog = blogData.get({ plain: true });
+    console.log(blog);
+    res.render("blogpost", {
+      blog,
+      logged_in: true,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

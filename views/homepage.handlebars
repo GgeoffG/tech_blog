@@ -1,18 +1,12 @@
 
 
-<section class="blogdisplay">
+<section class="blog-display">
     This is a test
 {{#each blog as |blogPost|}}
 <div class="blogPost" id={{blogPost.id}}>
-    <h5>|{{blogPost.title}}| posted by : {{blogPost.user.name}}</h5>
+    <h5>|<a href='blog/{{blogPost.id}}'>{{blogPost.title}}</a>| posted by : {{blogPost.user.name}}</h5>
     <p>{{blogPost.main}}</p>
-    {{#if blogPost.comments}}
-    <ul> Comments: {{blog.comments}}
-        {{#each blogPost.comments as |comment|}}
-    <li>{{comment.text}}</li>
-    {{/each}}
     </ul>
-    {{/if}}
 </div>
 {{/each}}
 </section>
