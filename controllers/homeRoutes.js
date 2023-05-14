@@ -36,13 +36,11 @@ router.get("/dashboard", async (req, res) => {
         {
           model: Blogpost,
         },
-        {
-          model: Comment,
-        },
       ],
     });
+    console.log(req.session.user_id);
     const user = userData.get({ plain: true });
-    console.log(userData);
+    console.log(43);
     res.render("dashboard", {
       ...user,
       logged_in: true,
