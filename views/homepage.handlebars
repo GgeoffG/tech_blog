@@ -1,12 +1,17 @@
-
-
 <section class="blog-display">
-    This is a test
-{{#each blog as |blogPost|}}
-<div class="blogPost" id={{blogPost.id}}>
-    <h5>|<a href='blog/{{blogPost.id}}'>{{blogPost.title}}</a>| posted by : {{blogPost.user.name}}</h5>
-    <p>{{blogPost.main}}</p>
-    </ul>
-</div>
-{{/each}}
+  <div class="container">
+    <div class="row">
+      {{#each blog as |blogPost|}}
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><a href="blog/{{blogPost.id}}">{{blogPost.title}}</a></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Posted by: {{blogPost.user.name}}</h6>
+            <p class="card-text">{{blogPost.main}}</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </section>

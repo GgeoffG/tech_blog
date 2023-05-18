@@ -1,5 +1,35 @@
 <section class="userGreeting">
-    <h4>Welcome! {{user.name}}</h4>
+  <div class="container">
+    <h4>Welcome {{user.name}}!</h4>
+  </div>
 </section>
 
-<section class="blog-display"></section>
+<section class="blog-display">
+  <div class="container">
+    <h5>Your Blogs</h5>
+    {{#each user.blogposts as |blog|}}
+    <div class="mb-3">
+      <h5><a href="blog/{{blog.id}}" class="btn btn-primary">|{{blog.title}}|</a></h5>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+<form class="form newpost-form hide">
+  <div class="container">
+    <div class="form-group label-group mb-3">
+      <label for="post-title">Title:</label>
+      <input class="form-control" type="text" id="post-title" />
+    </div>
+    <div class="form-group label-group mb-3">
+      <label for="post-body">Body:</label>
+      <textarea class="form-control" cols="100" rows="10" id="post-body"></textarea>
+    </div>
+  </div>
+</form>
+
+<div class="container">
+  <button class="btn btn-success m-3 create-button" id="create-post-button">Create new post</button>
+</div>
+
+<script src="./js/dashboard.js"></script>
