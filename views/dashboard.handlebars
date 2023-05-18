@@ -9,7 +9,9 @@
     <h5>Your Blogs</h5>
     {{#each user.blogposts as |blog|}}
     <div class="mb-3">
-      <h5><a href="blog/{{blog.id}}" class="btn btn-primary">|{{blog.title}}|</a></h5>
+      <h5><a href="blog/{{blog.id}}" class="btn btn-primary" >|{{blog.title}}|</a>  
+      <button class="btn btn-danger float-right delete-button" data-id="{{blog.id}}">X</button></h5>
+     
     </div>
     {{/each}}
   </div>
@@ -33,3 +35,4 @@
 </div>
 
 <script src="./js/dashboard.js"></script>
+<script src="./js/deletepost.js"></script>

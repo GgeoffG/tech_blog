@@ -29,24 +29,28 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/dashboard", async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
-      include: [
-        {
-          model: Blogpost,
-        },
-      ],
-    });
-    console.log(req.session.user_id);
-    const user = userData.get({ plain: true });
-    console.log(user);
-    res.render("dashboard", {
-      user,
-      logged_in: true,
-    });
-  } catch (err) {
-    res.status(500).json(err);
+  if (!req.session.user_id) {
+    res.redirect("/login");
+  } else {
+    try {
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ["password"] },
+        include: [
+          {
+            model: Blogpost,
+          },
+        ],
+      });
+      console.log(req.session.user_id);
+      const user = userData.get({ plain: true });
+      console.log(user);
+      res.render("dashboard", {
+        user,
+        logged_in: true,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
 });
 
@@ -63,28 +67,32 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/blog/:id", async (req, res) => {
-  try {
-    const blogData = await Blogpost.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
+  if (!req.session.user_id) {
+    res.redirect("/login");
+  } else {
+    try {
+      const blogData = await Blogpost.findByPk(req.params.id, {
+        include: [
+          {
+            model: User,
+            attributes: ["name"],
+          },
 
-        {
-          model: Comment,
-          include: [{ model: User, attributes: ["name"] }],
-        },
-      ],
-    });
-    const blog = blogData.get({ plain: true });
-    console.log(blog);
-    res.render("blogpost", {
-      blog,
-      logged_in: true,
-    });
-  } catch (err) {
-    res.status(500).json(err);
+          {
+            model: Comment,
+            include: [{ model: User, attributes: ["name"] }],
+          },
+        ],
+      });
+      const blog = blogData.get({ plain: true });
+      console.log(blog);
+      res.render("blogpost", {
+        blog,
+        logged_in: true,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
   }
 });
 

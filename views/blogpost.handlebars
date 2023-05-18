@@ -1,8 +1,9 @@
 <section class="blog-card card mb-4">
   <div class="card-body">
-    <h4 class="card-title blog-card-header">|{{blog.title}}| BY {{blog.user.name}}</h4>
+    <h4 class="card-title blog-card-header">|{{blog.title}}| BY {{blog.user.name}} <h5>{{blog.createdAt}}</h5></h4>
     <section class="single-blog">
-      <p class="card-text">{{blog.main}}</p>
+      <p class="card-text" id="post">{{blog.main}}</p>
+      <button class="btn btn-success" id="edit-button" data-id="{{blog.id}}">Edit</button>
     </section>
   </div>
 </section>
@@ -14,6 +15,7 @@
     <div class="card-body">
       <p class="card-text">{{comment.text}}</p>
       <p class="card-subtitle mb-0">- {{comment.user.name}}</p>
+      <p>{{comment.createdAt}}</p>
     </div>
   </div>
   {{/each}}
@@ -29,3 +31,4 @@
 </div>
 
 <script src="/js/comment.js"></script>
+<script src="/js/editpost.js"></script>
