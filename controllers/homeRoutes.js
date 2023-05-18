@@ -40,9 +40,9 @@ router.get("/dashboard", async (req, res) => {
     });
     console.log(req.session.user_id);
     const user = userData.get({ plain: true });
-    console.log(43);
+    console.log(user);
     res.render("dashboard", {
-      ...user,
+      user,
       logged_in: true,
     });
   } catch (err) {
