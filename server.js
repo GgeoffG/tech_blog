@@ -12,7 +12,21 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers: {
+    equal: function (a, b) {
+      if (a == b) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+});
+
+hbs.handlebars.registerHelper("equal", (a, b) => {
+  return a == b;
+});
 
 const sess = {
   secret: process.env.SESS_SECRET,

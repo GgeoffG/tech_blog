@@ -3,7 +3,9 @@
     <h4 class="card-title blog-card-header">|{{blog.title}}| BY {{blog.user.name}} <h5>{{blog.createdAt}}</h5></h4>
     <section class="single-blog">
       <p class="card-text" id="post">{{blog.main}}</p>
+      {{#if (equal req.session.id blog.user.id)}}
       <button class="btn btn-success" id="edit-button" data-id="{{blog.id}}">Edit</button>
+      {{/if}}
     </section>
   </div>
 </section>
