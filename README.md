@@ -32,12 +32,16 @@
   <!-- ABOUT THE PROJECT -->
   ## About The Project
   ### Project Images  
+  ### Homepage
   ![product-screenshot](https://github.com/GgeoffG/tech_blog/blob/main/images/homepage.png)<br>
   _______________________________________________________________________________ <br>
+  ### Login Page
   ![product-screenshot](https://github.com/GgeoffG/tech_blog/blob/main/images/login.png)<br>
   _______________________________________________________________________________<br>
+  ### Dashboard
    ![product-screenshot](https://github.com/GgeoffG/tech_blog/blob/main/images/dashboard.png)<br>
    ______________________________________________________________________________<br>
+   ### Blogpost Page
     ![product-screenshot](https://github.com/GgeoffG/tech_blog/blob/main/images/blogpost.png)<br>
   This is a fullstack application using an SQL database, handlebars, sequelize and other technologies to create a backend server where data is stored, and displays that data in the form of a blog. The blog allows users to sign in, view posts, create, edit and delete posts, and comment on posts. The application consists of 4 main pages, the home, login, dashboard, and blogpost page. This application is for demonstration purpose in order to show understanding of fullstack development, and the multiple engines/frameworks used to create it.
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
